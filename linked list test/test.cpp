@@ -98,15 +98,36 @@ public:
         }
     }
     void append(int newvalue){
-        Node *newnode = new Node(newvalue);
         if(isEmpty()){
-            head = newnode;
+            insertFirst(newvalue);
         }
         Node*temp =head;
         while( temp->next !=nullptr){
             temp = temp->next;
         }
+        Node *newnode = new Node(newvalue);
         temp->next = newnode;
+        newnode->next = nullptr;
+    }
+    void Delete(int item){
+        if(isEmpty()){
+            cout<<"list is empty , no item to delete\n";
+        }
+        Node*delptr = head;
+        if(head->data==item){
+            head = head->next;
+            delete delptr;
+        }
+        else{
+            Node*prev = nullptr;
+            delptr = head;
+            while(delptr->data != item){
+                prev = delptr;
+                delptr = delptr->next;
+            }
+            prev->next = delptr->next;
+            delete delptr;
+        }
     }
 };
 int main()
@@ -153,5 +174,9 @@ int main()
     cout << "\nEnter item to append in the list: ";
     cin >> newvalue;
     lst.append(newvalue);
+    lst.display();
+    cout << "\nEnter item to delete from the list: ";
+    cin >> item;
+    lst.Delete(item);
     lst.display();
 }
