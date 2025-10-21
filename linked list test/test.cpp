@@ -75,6 +75,39 @@ public:
         }
         return false;
     }
+    void insertbefore(int item, int newvalue)
+    {
+        if (head == nullptr)
+        {
+            cout << "item not found" << endl;
+            return;
+        }
+        if (head->data == item)
+        {
+            Node *newnode = new Node(newvalue);
+            newnode->next = head;
+            head = newnode;
+            return;
+        }
+        if (!isfound(item))
+        {
+            cout << "item not found" << endl;
+            return;
+        }
+        Node *temp = head;
+        while (temp->next != nullptr && temp->next->data != item)
+        {
+            temp = temp->next;
+        }
+        if (temp->next == nullptr)
+        {
+            cout << "item not found" << endl;
+            return;
+        }
+        Node *newnode = new Node(newvalue);
+        newnode->next = temp->next;
+        temp->next = newnode;
+    }
 };
 int main()
 {
@@ -111,4 +144,10 @@ int main()
     {
         cout << "item not found in the list\n";
     }
+    int newvalue;
+    cout << "enter item and new value to insert: ";
+    cin >> item;
+    cin >> newvalue;
+    lst.insertbefore(item, newvalue);
+    lst.display();
 }
