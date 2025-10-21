@@ -77,7 +77,8 @@ public:
     }
     void insertbefore(int item, int newvalue)
     {
-        if(isEmpty()){
+        if (isEmpty())
+        {
             insertFirst(newvalue);
         }
         if (isfound(item))
@@ -97,31 +98,39 @@ public:
             cout << "item not found in the list\n";
         }
     }
-    void append(int newvalue){
-        if(isEmpty()){
+    void append(int newvalue)
+    {
+        if (isEmpty())
+        {
             insertFirst(newvalue);
         }
-        Node*temp =head;
-        while( temp->next !=nullptr){
+        Node *temp = head;
+        while (temp->next != nullptr)
+        {
             temp = temp->next;
         }
         Node *newnode = new Node(newvalue);
         temp->next = newnode;
         newnode->next = nullptr;
     }
-    void Delete(int item){
-        if(isEmpty()){
-            cout<<"list is empty , no item to delete\n";
+    void Delete(int item)
+    {
+        if (isEmpty())
+        {
+            cout << "list is empty , no item to delete\n";
         }
-        Node*delptr = head;
-        if(head->data==item){
+        Node *delptr = head;
+        if (head->data == item)
+        {
             head = head->next;
             delete delptr;
         }
-        else{
-            Node*prev = nullptr;
+        else
+        {
+            Node *prev = nullptr;
             delptr = head;
-            while(delptr->data != item){
+            while (delptr->data != item)
+            {
                 prev = delptr;
                 delptr = delptr->next;
             }
