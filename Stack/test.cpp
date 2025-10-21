@@ -31,10 +31,12 @@ public:
             return false;
         }
     }
-    bool isfull(){
-        Node*temp = new Node();
-        if(temp == nullptr){
-            cout<<"The stack is full, cannot add more item\n";
+    bool isfull()
+    {
+        Node *temp = new Node();
+        if (temp == nullptr)
+        {
+            cout << "The stack is full, cannot add more item\n";
         }
     }
     void push(int item)
@@ -113,13 +115,15 @@ int main()
     s.display();
     cout << s.pop() << "was deleted from stack\n";
     s.display();
-    cout <<"Enter item to search for\n";
+    cout << "Enter item to search for\n";
     cin >> item;
-    if(s.isfound(item)){
-        cout<<"item found in the stack\n";
+    if (s.isfound(item))
+    {
+        cout << "item found in the stack\n";
     }
-    else{
-        cout<<"item not found in the stack\n";
+    else
+    {
+        cout << "item not found in the stack\n";
     }
-    cout<<"the stack contain : "<<s.count()<<" item(s)\n";
+    cout << "the stack contain : " << s.count() << " item(s)\n";
 }
