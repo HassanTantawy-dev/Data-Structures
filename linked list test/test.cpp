@@ -77,35 +77,35 @@ public:
     }
     void insertbefore(int item, int newvalue)
     {
-        if (head == nullptr)
-        {
-            cout << "item not found" << endl;
-            return;
+        if(isEmpty()){
+            insertFirst(newvalue);
         }
-        if (head->data == item)
+        if (isfound(item))
         {
-            Node *newnode = new Node(newvalue);
-            newnode->next = head;
+            Node *newnode = new Node();
+            newnode->data = newvalue;
+            Node *temp = head;
+            while (temp != nullptr && temp->next->data != item)
+            {
+                temp = temp->next;
+            }
+            newnode->next = temp->next;
+            temp->next = newnode;
+        }
+        else
+        {
+            cout << "item not found in the list\n";
+        }
+    }
+    void append(int newvalue){
+        Node *newnode = new Node(newvalue);
+        if(isEmpty()){
             head = newnode;
-            return;
         }
-        if (!isfound(item))
-        {
-            cout << "item not found" << endl;
-            return;
-        }
-        Node *temp = head;
-        while (temp->next != nullptr && temp->next->data != item)
-        {
+        Node*temp =head;
+        while( temp->next !=nullptr){
             temp = temp->next;
         }
-        if (temp->next == nullptr)
-        {
-            cout << "item not found" << endl;
-            return;
-        }
-        Node *newnode = new Node(newvalue);
-        newnode->next = temp->next;
         temp->next = newnode;
     }
 };
@@ -149,5 +149,9 @@ int main()
     cin >> item;
     cin >> newvalue;
     lst.insertbefore(item, newvalue);
+    lst.display();
+    cout << "\nEnter item to append in the list: ";
+    cin >> newvalue;
+    lst.append(newvalue);
     lst.display();
 }
