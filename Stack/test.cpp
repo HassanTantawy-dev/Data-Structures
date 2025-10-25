@@ -104,26 +104,45 @@ int main()
 {
     int item;
     stack s;
-    for (int i = 1; i <= 3; i++)
+    cout << "Stack Implementation\n";
+
+    for (int i = 1; i <= 3; ++i)
     {
-        cout << "Enter item to push\n";
-        cin >> item;
+        cout << "\nEnter item #" << i << " to push: ";
+        if (!(cin >> item)) 
+        {
+            cout << "Invalid input. Exiting...\n";
+            return 0;
+        }
         s.push(item);
+        cout << "Stack contains: ";
         s.display();
     }
-    cout << s.pop() << "was deleted from stack\n";
-    s.display();
-    cout << s.pop() << "was deleted from stack\n";
-    s.display();
-    cout << "Enter item to search for\n";
-    cin >> item;
-    if (s.isfound(item))
+
+    cout << "\nPerforming pop operations:\n";
+    for (int i = 1; i <= 2; ++i)
     {
-        cout << "item found in the stack\n";
+        if (!s.isEmpty())
+        {
+            cout << s.peek() << " was popped from stack\n";
+            s.pop();
+            cout << "Stack contains: ";
+            s.display();
+        }
+        else
+        {
+            cout << "Stack is empty, cannot pop\n";
+        }
     }
-    else
+
+    cout << "\nEnter item to search for: ";
+    if (!(cin >> item))
     {
-        cout << "item not found in the stack\n";
+        cout << "Invalid input. Exiting...\n";
+        return 0;
     }
-    cout << "the stack contain : " << s.count() << " item(s)\n";
+    cout << (s.isfound(item) ? "Item found in the stack\n" : "Item not found in the stack\n");
+
+    cout << "\nThe stack contains " << s.count() << " item(s)\n";
+    return 0;
 }
