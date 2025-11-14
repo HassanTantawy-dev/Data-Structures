@@ -26,7 +26,6 @@ int main()
     display();
 
     return 0;
-
 }
 void enqueue(int value)
 {
@@ -48,28 +47,41 @@ void enqueue(int value)
     }
 }
 
-void dequeue(){
-    if(f!=-1 && r!=-1 && f<=r){
+void dequeue()
+{
+    if (f != -1 && r != -1 && f <= r)
+    {
         f++;
-    }else{
+    }
+    else
+    {
         cout << "queue is full" << endl;
     }
 }
 
-void peek(){
-    if(f!=-1 && r!=-1&& f<=r){
-        cout<<"front element: "<<q[f]<<endl;
-    }else{
-        cout<<"queue is empty";
-    } 
+void peek()
+{
+    if (f != -1 && r != -1 && f <= r)
+    {
+        cout << "front element: " << q[f] << endl;
+    }
+    else
+    {
+        cout << "queue is empty";
+    }
 }
 
-void display(){
-    if(f!=-1 && r!=-1&& f<=r){
-        for(int i; i<=r ;i++){
-            cout<<q[i]<<endl;
+void display()
+{
+    if (f != -1 && r != -1 && f <= r)
+    {
+        for (int i; i <= r; i++)
+        {
+            cout << q[i] << endl;
         }
-    }else{
-        cout<<"queue is empty";
-    } 
+    }
+    else
+    {
+        cout << "queue is empty";
+    }
 }
