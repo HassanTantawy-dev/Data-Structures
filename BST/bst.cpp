@@ -137,31 +137,31 @@ public:
     }
     Node *Delete(Node *r, int key)
     {
-        if (r == nullptr) //Empty tree
+        if (r == nullptr) // Empty tree
         {
             return nullptr;
         }
-        if (key < r->data) //item is in left subtree
+        if (key < r->data) // item is in left subtree
         {
             r->left = Delete(r->left, key);
         }
-        else if (key > r->data) //item is in right subtree
+        else if (key > r->data) // item is in right subtree
         {
             r->right = Delete(r->right, key);
         }
         else
         {
-            if (r->left == nullptr && r->right == nullptr) //leaf node
+            if (r->left == nullptr && r->right == nullptr) // leaf node
             {
                 r = nullptr;
             }
-            else if (r->left != nullptr && r->right == nullptr) //one child on the left
+            else if (r->left != nullptr && r->right == nullptr) // one child on the left
             {
                 r->data = r->left->data;
                 delete r->left;
                 r->left = nullptr;
             }
-            else if (r->left == nullptr && r->right != nullptr) //one child on the right
+            else if (r->left == nullptr && r->right != nullptr) // one child on the right
             {
                 r->data = r->right->data;
                 delete r->right;
@@ -169,7 +169,7 @@ public:
             }
             else
             {
-                Node *max = findmax(r->left); //two children
+                Node *max = findmax(r->left); // two children
                 r->data = max->data;
                 r->left = Delete(r->left, max->data);
             }
@@ -228,13 +228,12 @@ int main()
     {
         cout << "maximum item is: " << max->data << "\n";
     }
-    cout<<"\nDelete item:\n";
-    Node*result=t.Delete(t.root,12);
-    cout<<"preorder after delete 12\n";
+    cout << "\nDelete item:\n";
+    Node *result = t.Delete(t.root, 12);
+    cout << "preorder after delete 12\n";
     t.preorder(result);
 
-    result=t.Delete(t.root,15);
-    cout<<"preorder after delete 15\n";
+    result = t.Delete(t.root, 15);
+    cout << "preorder after delete 15\n";
     t.preorder(result);
-    
 };
